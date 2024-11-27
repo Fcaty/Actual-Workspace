@@ -1,65 +1,53 @@
 #include <stdio.h>
 #include <math.h>
 
-//op is an external variable so that it affects displayResult(); 
+/*The op integer is an external variable so that displayNumber() is able to
+read the value of op*/ 
 int op = 0;
 
-//This function adds the sum of 2 numbers
-int computeSum(int num1, int num2){
-    int sum;
-    sum = num1 + num2;
-    return sum;
+//This function adds two numbers together  
+double computeSum(double num1, double num2){
+    return num1 + num2;
 }
-
 //This function subtracts the second number from the first number
-int computeDifference(int num1, int num2){
-    int diff;
-    diff = num1 - num2;
-    return diff;
+double computeDifference(double num1, double num2){
+    return num1 - num2;
 }
-
-//This function multiplies two numbers 
-int computeProduct(int num1, int num2){
-    int prod;
-    prod = num1 * num2;
-    return prod;
+//This function multiplies two integers
+double computeProduct(double num1, double num2){
+    return num1 * num2;
 }
 //This function divides a number by another number
-double computeQuotient(int num1, int num2){
-    double quot;
-    quot = (double) num1 / num2;
-    return quot; 
+double computeQuotient(double num1, double num2){
+    if (num2 == 0){
+        printf("Anything divided by 0 is undefined.\n\n");
+        return 0;
+    }
+    return (double) num1 / num2; 
 }
 //This function calculates the square root of a number
-double computeSquareRoot(int num1){
-    double result;
-    result = sqrt(num1);
-    return result;
+double computeSquareRoot(double num1){
+    if (num1 < 0){
+        printf("Negative numbers are imaginary numbers.\n\n");
+        return 0;
+    }
+    return sqrt(num1);
 }
 /*This function calculates the exponent from 2 numbers; the first being the
 base while the second number is the exponent: a^b*/
-double computeExponent(int num1, int num2){
-    double exponent;
-    exponent = pow(num1,num2);
-    return exponent;
+double computeExponent(double num1, double num2){
+    return pow(num1,num2);
 }
 
-//These funcions display the result
-int displayResult(int num1, int num2, int result){
-    switch(op){
-        case 1: printf("The sum of %d and %d is: %d\n",num1, num2, result); break;
-        case 2: printf("The difference of %d and %d is: %d\n",num1, num2, result); break;
-        case 3: printf("The product of %d and %d is: %d\n", num1, num2, result); break;
-        case 6: printf("%d raised to %d is: %d\n", num1, num2, result); break;
+//This function displays the result
+void displayResult(double num1, double num2, double resultSum){
+    printf("The sum of %.2lf and %.2lf is %.2lf", num1, num2, resultSum);
     }
+
+ displayResult(double num1, double num2, double resultDiff){
+    printf("The difference of %.2lf and %.2lf is %.2lf", num1, num2, resultDiff);
 }
 
-double dDisplayResult(int num1, int num2, double result){
-    switch(op){
-        case 4: printf("The quotient of %d and %d is: %.2lf\n", num1, num2, result); break;
-        case 5: printf("The square root of %d is: %.2lf\n",num1, result); break;
-    }
-}
 
 //This is the function that displays the initial options
 void displayMenu(){
@@ -76,8 +64,7 @@ void displayMenu(){
 
 //This is the main function
 int main(){
-    int num1, num2, iResult;
-    double dResult;
+    double num1, num2, resultSum, resultDiff, resultProd, resultQuot, resultSqrt, resultExp;
     char conf;
 
     repeat:
@@ -85,65 +72,46 @@ int main(){
     displayMenu();
     scanf("%d", &op);
 
-//This switch-case statement determines how many numbers the program will request from the user based on "op"
+    printf("Input the 1st number: ");
+    scanf("%lf", &num1);
+    printf("Input the 2nd number: ");
+    scanf("%lf", &num2);
+
     switch(op){
-        case 1: case 2: case 3: case 4: 
-            printf("Input the 1st number: ");
-            scanf("%d", &num1);
-            printf("Input the 2nd number: ");
-            scanf("%d", &num2);
+        case 1:
+            result=computeSum(num1, num2); 
+            displayResult(num1, num2, resultSum, A);
+            break;
+        case 2:
+            result=computeDifference(num1, num2,); 
+            displayResult(num1, num2, resultDiff, 1);
+            break;
+        case 3:
+            result=computeProduct(num1, num2); 
+            displayResult(num1, num2, resultProd);
+            break;
+        case 4:
+            result=computeQuotient(num1, num2); 
+            displayResult(num1, num2, resultQuot);
             break;
         case 5:
             printf("Input a number: ");
-            scanf("%d", &num1);
+            scanf("%lf", &num1);
+            result=computeSquareRoot(num1); 
+            displayResult(num1, 0, resultSqrt);
             break;
         case 6:
             printf("Input the base: ");
-            scanf("%d", &num1);
+            scanf("%lf", &num1);
             printf("Input the exponent: ");
-            scanf("%d", &num2);
+            scanf("%lf", &num2);
+            result=computeExponent(num1, num2); 
+            displayResult(num1, num2, resultExp);
             break;
-        case 7: default: 
-            break;
-    }
-
-//This switch-case statement determines what function to use based on "op"
-    switch(op){
-        case 1: 
-            iResult=computeSum(num1, num2); 
-            displayResult(num1, num2, iResult);
-            break;
-
-        case 2: 
-            iResult=computeDifference(num1, num2); 
-            displayResult(num1, num2, iResult);
-            break;
-
-        case 3: 
-            iResult=computeProduct(num1, num2); 
-            displayResult(num1, num2, iResult);
-            break;
-
-        case 4: 
-            dResult=computeQuotient(num1, num2); 
-            dDisplayResult(num1, num2, dResult);
-            break;
-
-        case 5: 
-            dResult=computeSquareRoot(num1); 
-            dDisplayResult(num1, 0, dResult);
-            break;
-
-        case 6: 
-            iResult=computeExponent(num1, num2); 
-            displayResult(num1, num2, iResult);
-            break;
-
         case 7: printf("Exiting...\n"); goto end;
         default: printf("Error: Not a Valid Operation"); break; 
     }
 
-//This allows the user to repeat using the program until 'N' is input
     printf("\nWould you like to use the program again? [Y/N]: ");
     scanf("\n%c",&conf);
     
