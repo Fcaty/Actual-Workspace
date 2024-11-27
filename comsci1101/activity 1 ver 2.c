@@ -42,9 +42,9 @@ double computeExponent(double num1, double num2){
 //These function display the result
 void displayResult(double num1, double num2, double result){
     switch(op){
-        case 1:
-        case 2:
-        case 3:
+        case 1: printf(The sum of %.2lf and %.2lf is %.2lf);
+        case 2: printf("%.2lf subtracted by %.2lf is %.2lf");
+        case 3: printf("The product")
         case 4:
         case 5:
         case 6:
