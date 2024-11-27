@@ -40,30 +40,17 @@ double computeExponent(double num1, double num2){
 }
 
 //These function display the result
-void displayResult(double num1, double num2, double resultSum){
-    printf("The sum of %.2lf and %.2lf is %.2lf", num1, num2, resultSum);
-}
+void displayResult(double num1, double num2, double result){
+    switch(op){
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+    }
 
-void displayResult(double num1, double num2, double resultDiff){
-    printf("The difference of %.2lf and %.2lf is %.2lf", num1, num2, resultDiff);
 }
-
-void displayResult(double num1, double num2, double resultProd){
-    printf("The product of %.2lf and %.2lf is %.2lf", num1, num2, resultProd);
-}
-
-void displayResult(double num1, double num2, double resultQuot){
-    printf("%.2lf divided by %.2lf is %.2lf", num1, num2, resultQuot);
-}
-
-void displayResult(double num1, double resultSqrt){
-    printf("The square root of %.2lf is %.2lf");
-}
-
-void displayResult(double num1, double num2, double resultExp){
-    printf("%.2lf raised to %.2lf is %.2lf");
-}
-
 //This is the function that displays the initial options
 void displayMenu(){
     printf("\nYou are now using the calculator.\n");
@@ -79,7 +66,7 @@ void displayMenu(){
 
 //This is the main function
 int main(){
-    double num1, num2, resultSum, resultDiff, resultProd, resultQuot, resultSqrt, resultExp;
+    double num1, num2, result;
     char conf;
 
     repeat:
