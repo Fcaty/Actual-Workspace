@@ -19,10 +19,6 @@ double computeProduct(double num1, double num2){
 }
 //This function divides a number by another number
 double computeQuotient(double num1, double num2){
-    if (num2 == 0){
-        printf("Anything divided by 0 is undefined.\n\n");
-        return 0;
-    }
     return (double) num1 / num2; 
 }
 //This function calculates the square root of a number
@@ -117,6 +113,10 @@ int main(){
             scanf("%lf", &num1);
             printf("Input the 2nd number: ");
             scanf("%lf", &num2);
+                if(num2 == 0){
+                    printf("Anything divided by 0 is undefined.");
+                    break;
+                } 
             resultQuot=computeQuotient(num1, num2); 
             displayResult(num1, num2, resultQuot, 1.1);
             break;

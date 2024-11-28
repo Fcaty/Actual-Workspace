@@ -12,7 +12,7 @@ double function1(int test1, int test2){
 int main(){
     double test1 = 4, test2 = 2, result;
 
-    result = function1(test1, test2);
+    result = function1(test1,test2);
 
     printf("%.2lf", result);
 
