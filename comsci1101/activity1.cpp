@@ -27,41 +27,41 @@ double computeQuotient(double num1, double num2){
 }
 //This function calculates the square root of a number
 double computeSquareRoot(double num1){
-    if (num1 < 0){
+    if(num1 < 0){
         printf("Negative numbers are imaginary numbers.\n\n");
         return 0;
-    }
+    } 
     return sqrt(num1);
 }
 /*This function calculates the exponent from 2 numbers; the first being the
 base while the second number is the exponent: a^b*/
 double computeExponent(double num1, double num2){
-    return pow(num1,num2);
+    return pow(num1, num2);
 }
 
 //These function display the result
-void displayResult(double num1, double num2, double resultSum){
+void displayResult(double num1, double num2, double resultSum, int key){
     printf("The sum of %.2lf and %.2lf is %.2lf", num1, num2, resultSum);
 }
 
-void displayResult(double num1, double num2, double resultDiff){
+void displayResult(double num1, double num2, double resultDiff, char key){
     printf("The difference of %.2lf and %.2lf is %.2lf", num1, num2, resultDiff);
 }
 
-void displayResult(double num1, double num2, double resultProd){
+void displayResult(double num1, double num2, double resultProd, float key){
     printf("The product of %.2lf and %.2lf is %.2lf", num1, num2, resultProd);
 }
 
-void displayResult(double num1, double num2, double resultQuot){
+void displayResult(double num1, double num2, double resultQuot, double key){
     printf("%.2lf divided by %.2lf is %.2lf", num1, num2, resultQuot);
 }
 
 void displayResult(double num1, double resultSqrt){
-    printf("The square root of %.2lf is %.2lf");
+    printf("The square root of %.2lf is %.2lf", num1, resultSqrt);
 }
 
 void displayResult(double num1, double num2, double resultExp){
-    printf("%.2lf raised to %.2lf is %.2lf");
+    printf("%.2lf raised to %.2lf is %.2lf", num1, num2, resultExp);
 }
 
 //This is the function that displays the initial options
@@ -87,27 +87,38 @@ int main(){
     displayMenu();
     scanf("%d", &op);
 
-    printf("Input the 1st number: ");
-    scanf("%lf", &num1);
-    printf("Input the 2nd number: ");
-    scanf("%lf", &num2);
-
     switch(op){
-        case 1:
+        case 1: 
+            printf("Input the 1st number: ");
+            scanf("%lf", &num1);
+            printf("Input the 2nd number: ");
+            scanf("%lf", &num2);
             resultSum=computeSum(num1, num2); 
-            displayResult(num1, num2, resultSum);
+            displayResult(num1, num2, resultSum, 1);
             break;
         case 2:
+            printf("Input the 1st number: ");
+            scanf("%lf", &num1);
+            printf("Input the 2nd number: ");
+            scanf("%lf", &num2);
             resultDiff=computeDifference(num1, num2); 
-            displayResult(num1, num2, resultDiff);
+            displayResult(num1, num2, resultDiff, 'A');
             break;
         case 3:
+            printf("Input the 1st number: ");
+            scanf("%lf", &num1);
+            printf("Input the 2nd number: ");
+            scanf("%lf", &num2);
             resultProd=computeProduct(num1, num2); 
-            displayResult(num1, num2, resultProd);
+            displayResult(num1, num2, resultProd, 1.1);
             break;
         case 4:
+            printf("Input the 1st number: ");
+            scanf("%lf", &num1);
+            printf("Input the 2nd number: ");
+            scanf("%lf", &num2);
             resultQuot=computeQuotient(num1, num2); 
-            displayResult(num1, num2, resultQuot);
+            displayResult(num1, num2, resultQuot, 1.1);
             break;
         case 5:
             printf("Input a number: ");
@@ -121,8 +132,8 @@ int main(){
             printf("Input the exponent: ");
             scanf("%lf", &num2);
             resultExp=computeExponent(num1, num2); 
-            displayResult(num1, num2, resultExp);
-            break;*/
+            displayResult(num1, num2, resultExp); 
+            break;
         case 7: printf("Exiting...\n"); goto end;
         default: printf("Error: Not a Valid Operation"); break; 
     }
