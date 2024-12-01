@@ -6,58 +6,49 @@ read the value of op*/
 int op = 0;
 
 //This function adds two numbers together  
-double computeSum(double num1, double num2){
+double computeSum(float num1, float num2){
     return num1 + num2;
 }
 //This function subtracts the second number from the first number
-double computeDifference(double num1, double num2){
+double computeDifference(float num1, float num2){
     return num1 - num2;
 }
 //This function multiplies two integers
-double computeProduct(double num1, double num2){
+double computeProduct(float num1, float num2){
     return num1 * num2;
 }
 //This function divides a number by another number
-double computeQuotient(double num1, double num2){
+double computeQuotient(float num1, float num2){
     return (double) num1 / num2; 
 }
 //This function calculates the square root of a number
-double computeSquareRoot(double num1){
-    if(num1 < 0){
-        printf("Negative numbers are imaginary numbers.\n\n");
-        return 0;
-    } 
+double computeSquareRoot(float num1){
     return sqrt(num1);
 }
 /*This function calculates the exponent from 2 numbers; the first being the
 base while the second number is the exponent: a^b*/
-double computeExponent(double num1, double num2){
+double computeExponent(float num1, float num2){
     return pow(num1, num2);
 }
 
-//These function display the result
-void displayResult(double num1, double num2, double resultSum, int key){
-    printf("The sum of %.2lf and %.2lf is %.2lf", num1, num2, resultSum);
+//These functions display the result for the sum and difference functions
+void displayResult(float num1, float num2, float result){
+    switch(op){
+        case 1: printf("The sum of %.2f and %.2f is %.2lf\n", num1, num2, result); break;
+        case 2: printf("The difference of %.2f and %.2f is %.2f\n", num1, num2, result); break;
+    }
 }
-
-void displayResult(double num1, double num2, double resultDiff, char key){
-    printf("The difference of %.2lf and %.2lf is %.2lf", num1, num2, resultDiff);
+//These functions display the result for the product, quotient, and exponent functions
+void displayResult(float num1, float num2, double result){
+    switch(op){
+        case 3: printf("The product of %.2f and %.2f is %.4lf\n", num1, num2, result); break;
+        case 4: printf("%.2f divided by %.2f is %.4lf\n", num1, num2, result); break;
+        case 6: printf("%.2f raised to %.2f is %.4lf\n", num1, num2, result); break;
+    }
 }
-
-void displayResult(double num1, double num2, double resultProd, float key){
-    printf("The product of %.2lf and %.2lf is %.2lf", num1, num2, resultProd);
-}
-
-void displayResult(double num1, double num2, double resultQuot, double key){
-    printf("%.2lf divided by %.2lf is %.2lf", num1, num2, resultQuot);
-}
-
-void displayResult(double num1, double resultSqrt){
-    printf("The square root of %.2lf is %.2lf", num1, resultSqrt);
-}
-
-void displayResult(double num1, double num2, double resultExp){
-    printf("%.2lf raised to %.2lf is %.2lf", num1, num2, resultExp);
+//These functions display the result for the square root functions
+void displayResult(float num1, double result){
+    printf("The square root of %.2f is %.4lf\n", num1, result);
 }
 
 //This is the function that displays the initial options
@@ -75,7 +66,8 @@ void displayMenu(){
 
 //This is the main function
 int main(){
-    double num1, num2, resultSum, resultDiff, resultProd, resultQuot, resultSqrt, resultExp;
+    float num1, num2, fResult;
+    double  resultProd, dResult;
     char conf;
 
     repeat:
@@ -86,53 +78,57 @@ int main(){
     switch(op){
         case 1: 
             printf("Input the 1st number: ");
-            scanf("%lf", &num1);
+            scanf("%f", &num1);
             printf("Input the 2nd number: ");
-            scanf("%lf", &num2);
-            resultSum=computeSum(num1, num2); 
-            displayResult(num1, num2, resultSum, 1);
+            scanf("%f", &num2);
+            fResult=computeSum(num1, num2); 
+            displayResult(num1, num2, fResult);
             break;
         case 2:
             printf("Input the 1st number: ");
-            scanf("%lf", &num1);
+            scanf("%f", &num1);
             printf("Input the 2nd number: ");
-            scanf("%lf", &num2);
-            resultDiff=computeDifference(num1, num2); 
-            displayResult(num1, num2, resultDiff, 'A');
+            scanf("%f", &num2);
+            fResult=computeDifference(num1, num2); 
+            displayResult(num1, num2, fResult);
             break;
         case 3:
             printf("Input the 1st number: ");
-            scanf("%lf", &num1);
+            scanf("%f", &num1);
             printf("Input the 2nd number: ");
-            scanf("%lf", &num2);
-            resultProd=computeProduct(num1, num2); 
-            displayResult(num1, num2, resultProd, 1.1);
+            scanf("%f", &num2);
+            dResult=computeProduct(num1, num2); 
+            displayResult(num1, num2, dResult);
             break;
         case 4:
             printf("Input the 1st number: ");
-            scanf("%lf", &num1);
+            scanf("%f", &num1);
             printf("Input the 2nd number: ");
-            scanf("%lf", &num2);
+            scanf("%f", &num2);
                 if(num2 == 0){
-                    printf("Anything divided by 0 is undefined.");
+                    printf("Anything divided by 0 is undefined.\n");
                     break;
                 } 
-            resultQuot=computeQuotient(num1, num2); 
-            displayResult(num1, num2, resultQuot, 1.1);
+            dResult=computeQuotient(num1, num2); 
+            displayResult(num1, num2, dResult);
             break;
         case 5:
             printf("Input a number: ");
-            scanf("%lf", &num1);
-            resultSqrt=computeSquareRoot(num1); 
-            displayResult(num1, resultSqrt);
+            scanf("%f", &num1);
+            if(num1 < 0){
+                printf("The square root of a negative number is imaginary.\n");
+                break;
+            }
+            dResult=computeSquareRoot(num1); 
+            displayResult(num1, dResult);
             break;
         case 6:
             printf("Input the base: ");
-            scanf("%lf", &num1);
+            scanf("%f", &num1);
             printf("Input the exponent: ");
-            scanf("%lf", &num2);
-            resultExp=computeExponent(num1, num2); 
-            displayResult(num1, num2, resultExp); 
+            scanf("%f", &num2);
+            dResult=computeExponent(num1, num2); 
+            displayResult(num1, num2, dResult); 
             break;
         case 7: printf("Exiting...\n"); goto end;
         default: printf("Error: Not a Valid Operation"); break; 
