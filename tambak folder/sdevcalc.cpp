@@ -33,7 +33,7 @@ int main(){
 
 //Data set input
     for(int l = 0; l < size; l++){
-        printf("Item [%d]: ",l+1);
+        printf("Item [%d]: ",l);
         scanf("%d", &dataSet[l]);
     }
 
