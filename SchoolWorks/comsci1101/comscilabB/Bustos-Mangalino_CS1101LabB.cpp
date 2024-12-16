@@ -16,7 +16,7 @@ void displayMenu(){
     printf("[4] Delete Student Information\n");
     printf("[5] Exit\n\n");
 }
-//The next 6 functions are functions that are called by infoInput() and editInput().
+
 
 //This function enables the user to select the operation they would like to execute.
 int menuSelect(){
@@ -28,6 +28,8 @@ int menuSelect(){
 
     return option;
 }
+
+//The next 5 functions are functions that are called by infoInput() and editInput().
 //This function reads a student ID input from the user.
 int idInput(){
     int tempID;
@@ -61,6 +63,7 @@ It will also ensure that the user does NOT input a number not assigned to any co
 with the use of an if statement.*/
 int courseInput(){
     int tempCourse;
+    
     printf("[1] Bachelor of Science in Civil Engineering\n");
     printf("[2] Bachelor of Science in Agriculture and Biosystems Engineering\n");
     printf("[3] Bachelor of Science in Information Technology\n");
@@ -115,7 +118,7 @@ int gradeInput(){
     return tempGrade;
 }
 
-//The previous 6 functions are functions that are called by infoInput() and editInput().
+//The previous 5 functions are functions that are called by infoInput() and editInput().
 
 //This function calls the other functions that take in inputs from the user.
 void infoInput(){
@@ -130,13 +133,15 @@ void infoInput(){
 void editInput(){
     int option;
     
+    printf("==============================\n");
+    printf("==============================\n");
     printf("\nEdit Student Details\n");
     printf("[1] Edit Student ID\n");
     printf("[2] Edit Student Age\n");
     printf("[3] Edit Student Course\n");
     printf("[4] Edit Student Year Level\n");
     printf("[5] Edit Student Grade\n");
-    printf("[6] Go Back\n");
+    printf("[6] Cancel\n");
     
     repeat:
     
@@ -150,7 +155,7 @@ void editInput(){
         case 4: yearlvl = yearInput(); break;
         case 5: grade = gradeInput(); break;
         case 6: break;
-        default: printf("Invalid Input!\n"); goto repeat; break;
+        default: printf("Invalid Input!\n"); goto repeat;
     }
 }
 
@@ -222,7 +227,7 @@ void deleteInput(){
         case 3: showInput(); break;
         case 4: deleteInput(); break;
         case 5: printf("Terminating program...\n"); goto end;
-        default: goto repeat; 
+        default: printf("Invalid Input!\n"); goto repeat; 
     }
 
 /*This do while loop makes the user experience seamless
